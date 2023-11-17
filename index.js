@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
+const router = express.Router();
 
 app.use(express.json());
 app.use(cors());
@@ -25,6 +26,9 @@ mongoose.connect(DB,{}).then(()=>{
     console.log("connection successful");
 }).catch((err)=>console.log("no connection"));
 
+router.get("/", (req, res) => {
+    res.send("Welcome to the POS Server!");
+  });
 
 app.use("/api/user",userRoute);
 app.use("/api/product",productRoute);
