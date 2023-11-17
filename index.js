@@ -23,13 +23,14 @@ const DB = "mongodb://marwakhalid:marwamarwa@marwa-shard-00-00.x9zjp.mongodb.net
 
 mongoose.set("strictQuery", false);
 mongoose.connect(DB,{}).then(()=>{
-    console.log("connection successful");
+    console.log("backend connection is successful");
 }).catch((err)=>console.log("no connection"));
 
 router.get("/", (req, res) => {
     res.send("Welcome to the POS Server!");
   });
-
+  
+app.use("/", router);
 app.use("/api/user",userRoute);
 app.use("/api/product",productRoute);
 app.use("/api/order",orderRoute);
@@ -37,5 +38,5 @@ app.use("/api/purchase",purchaseRoute);
 app.use("/api/salary",salaryRoute);
 
 app.listen(port, ()=>{
-    console.log(`Server running at https://localhost:${port}/`);
+    console.log(`Server running at port numnber ${port}`);
 });
