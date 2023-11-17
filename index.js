@@ -20,6 +20,7 @@ app.use(cors({
     credentials: true
 }));
 
+mongoose.set("strictQuery", false);
 mongoose.connect(DB,{}).then(()=>{
     console.log("connection successful");
 }).catch((err)=>console.log("no connection"));
@@ -32,6 +33,6 @@ app.use("/api/order",orderRoute);
 app.use("/api/purchase",purchaseRoute);
 app.use("/api/salary",salaryRoute);
 
-app.listen(5001, ()=>{
+app.listen(8201, ()=>{
     console.log("backened is running");
 });
