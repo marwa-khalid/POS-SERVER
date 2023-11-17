@@ -8,6 +8,8 @@ app.use(express.json());
 app.use(cors());
 app.use(express.json());
 
+const port = process.env.PORT || 3000;
+
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 const userRoute = require("./Routes/User");
@@ -30,6 +32,6 @@ app.use("/api/order",orderRoute);
 app.use("/api/purchase",purchaseRoute);
 app.use("/api/salary",salaryRoute);
 
-app.listen(3000, ()=>{
-    console.log("backened is running");
+app.listen(port, ()=>{
+    console.log(`Server running at https://localhost:${port}/`);
 });
